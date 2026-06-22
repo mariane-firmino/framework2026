@@ -1,6 +1,8 @@
 <?php
 class Rota{
     private $controlador = "Paginas";
+    private $metodo ="index";
+    private $parametros = [];
 
     public function __construct(){
         $url = $this->url() ? $this->url() : [0];
@@ -10,6 +12,14 @@ class Rota{
         }
         require_once '../app/Controllers/'.$this->controlador.'.php';
         $this->controlador = new $this->controlador;
+        if(isset($url[1])){
+            if(method_exists($this->controlador, $url[1])){
+                $this->metodo = $url[1];
+                unset($url[1]);
+            } // fim do if verifica se o metodo existe
+        } // fim do if que verifica se a url existe
+        $this->parametros = $url ? array_values($url) : [];
+        call_user_func_array([$this->controlador, $this->metodo], $this->parametros);
 
         var_dump($this);
     } // fim da função construtor
@@ -26,3 +36,4 @@ class Rota{
         } // fim do if
     } // fim da função url
 }// fim da classe Rota
+?>

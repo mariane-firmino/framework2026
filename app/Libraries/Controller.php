@@ -5,7 +5,7 @@ class Controller{
         return new $model;
     } // fim da funçao model
     public function view($view, $dados = []){
-        $arquivo = ('../app/View/'.$view.'.php');
+        $arquivo = ('../app/Views/'.$view.'.php');
         if(file_exists($arquivo)){
             require_once $arquivo;
         } else {

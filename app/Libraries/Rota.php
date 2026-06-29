@@ -20,8 +20,6 @@ class Rota{
         } // fim do if que verifica se a url existe
         $this->parametros = $url ? array_values($url) : [];
         call_user_func_array([$this->controlador, $this->metodo], $this->parametros);
-
-        var_dump($this);
     } // fim da função construtor
     private function url(){
         // O filter sanitize url remove todos os caracteres ilegais de uma url

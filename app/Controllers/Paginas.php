@@ -8,5 +8,9 @@ class Paginas extends Controller{
         $dados = ['titulo'=>"Página sobre nós", 'descricao'=>"Aqui você encontra as melhores noticias mais confiaveis..."];
         $this->view('paginas/sobre', $dados);
     } // fim da funçao sobre
+    public function contato(){
+        $dados = ['titulo'=>"Página contato", 'descricao'=>"Aqui você encontra os contatos"];
+        $this->view('paginas/contato', $dados);
+    } // fim da funçao contato
 }// fim da classe Paginas
 ?>

@@ -1,2 +1,7 @@
 <h1><?php echo $dados['titulo'];?></h1>
 <p><?php echo $dados['descricao'];?></p>
+
+
+<div class="container">
+  <!-- Content here -->
+</div>

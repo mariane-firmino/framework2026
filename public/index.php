@@ -1,16 +1,31 @@
 <?php
 include '../app/configuracao.php';
-include '../app/Libraries/Rota.php';
-include '../app/Libraries/Controller.php';
-include '../app/Libraries/Database.php';
+include '../app/Autoload.php';
+
 $db = new Database;
+
+
+
+/*
+$db->query("SELECT * FROM post");
+foreach($db->resultados() as $post){
+    echo $post->post_titulo.'<br>';
+}
+
+$db->query("SELECT * FROM post ORDER BY post_id DESC");
+$db->resultado();
+echo $db->resultado()->post_titulo;
+echo '<br>';
+echo $db->resultado()->post_texto;
+echo '<br>';
+echo $db->resultado()->usua_id;
 
 $id = 4;
 $db->query("DELETE FROM post WHERE post_id = :id");
 $db->bind(':id', $id);
 $db->executa();
 echo '<hr> Total Resultados: '.$db->totalResultados();
-/*
+
 date_default_timezone_set('America/Cuiaba');
 $id = 2;
 $usua_id = 100;

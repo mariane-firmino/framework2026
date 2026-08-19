@@ -1,10 +1,11 @@
 <?php
 class Usuarios extends Controller{
-public function cadastrar(){
     public function __construct(){
         $this->usuarioModel = $this->model('Usuario');
     }
 
+    public function cadastrar(){
+    
         $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
         if (isset($formulario)) :
             $dados = [
@@ -72,6 +73,53 @@ public function cadastrar(){
 
 
         $this->view('usuarios/cadastrar', $dados);
+    }
+
+
+    public function login () {
+        
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+        if (isset($formulario)) :
+            $dados = [
+                'email' => trim($formulario['email']),
+                'senha' => trim($formulario['senha']),
+            ];
+
+            if (in_array("", $formulario)) :
+
+                if (empty($formulario['email'])) :
+                    $dados['email_erro'] = 'Preencha o campo e-mail';
+                endif;
+
+                if (empty($formulario['senha'])) :
+                    $dados['senha_erro'] = 'Preencha o campo senha';
+                endif;
+            elsey:
+                if (Checa::checarEmail($formulario['email'])) :
+                    $dados['email_erro'] = 'O e-mail informado é invalido';
+                else:
+                    $usuario = $this->usuarioModel->checarLogin($formulario['email'], $formulario['senha']);
+
+                    if($usuario): 
+                        $this->criarSessaoUsuario($usuario);
+                    else:
+                        Sessao::mensagem('usuario','Usuario ou senha invalidos','alert alert-danger');
+                    endif;
+
+                endif;
+
+            endif;
+        else :
+            $dados = [
+                'email' => '',
+                'senha' => '',
+                'email_erro' => '',
+                'senha_erro' => '',
+            ];
+
+        endif;
+
+        $this->view('usuarios/login', $dados);
     }
 
 }

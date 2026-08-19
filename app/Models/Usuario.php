@@ -18,13 +18,28 @@ class Usuario{
         endif;
     }// fim da função armazenar
 
-    public functin checarEmail($email){
+    public function checarEmail($email){
         $this->db->query("SELECT usua_email FROM usuarios WHERE usua_email = :e");
-        $this->db->bind(":e", $dados['email']);
+        $this->db->bind(":e", $email);
         if($this->db->resultado()):
             return true;
         else:
             return false;
         endif;
     } // fim da função checar email
+
+    public function checarLogin($email, $senha) {
+        $this->db->query("SELECT * FROM usuarios WHERE usua_email = :e");
+        $this->db->bind(":e", $email);
+        if($this->db->resultado()):
+            $resultado = $this->db->resultado();
+            if(password_verify($senha, $resultado->usua_senha)):
+                return $resultado;
+            else:
+                return false;
+            endif;
+        else:
+            return false;
+        endif;
+    }
 }

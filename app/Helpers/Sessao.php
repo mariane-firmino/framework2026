@@ -28,5 +28,4 @@ class Sessao{
             return false;
         endif;
     }// fim da função estaLogado
-
 }//fim da classe Sessao

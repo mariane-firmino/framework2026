@@ -122,4 +122,20 @@ class Usuarios extends Controller{
         $this->view('usuarios/login', $dados);
     }
 
-}
+    function criarSessaoUsuario($usuario){
+        $_SESSION['usuario_id'] = $usuario->usua_id;
+        $_SESSION['usuario_nome'] = $usuario->usua_nome;
+        $_SESSION['usuario_email'] = $usuario->usua_email;
+        Url::redirecionar('posts');
+    } // fim da função criarSessaoUsuario
+
+    public function sair() {
+        unset($_SESSION['usuario_id']);
+        unset($_SESSION['usuario_nome']);
+        unset($_SESSION['usuario_email']);
+
+        session_destroy();
+        URL::redirecionar('usuarios/login');
+    } // fim da função sair
+
+} // fim da classe

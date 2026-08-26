@@ -94,7 +94,7 @@ class Usuarios extends Controller{
                 if (empty($formulario['senha'])) :
                     $dados['senha_erro'] = 'Preencha o campo senha';
                 endif;
-            elsey:
+            else:
                 if (Checa::checarEmail($formulario['email'])) :
                     $dados['email_erro'] = 'O e-mail informado é invalido';
                 else:

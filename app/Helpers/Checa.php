@@ -7,6 +7,7 @@ class Checa {
             return false;
         endif;
     } // fim da função ChecarNome
+
     public static function checarEmail($email){
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)):
             return true;
@@ -14,4 +15,12 @@ class Checa {
             return false;
         endif;
     } // fim da função checarEmail
+
+    public static function dataBr($data){
+      if(isset($data)):
+        return date('d/m/Y H:i', strtotime($data));
+      else:
+        return false;
+      endif;
+    }
 } // fim da função checa

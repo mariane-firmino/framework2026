@@ -8,9 +8,25 @@ class Posts extends Controller {
         $this->usuarioModel = $this->model('Usuario');
     }
 
-    public function index(){
-        $this->view('posts/index');
+    public function index()
+    {
+        $dados = [
+            'posts' => $this->postModel->lerPosts()
+        ];
+
+        $this->view('posts/index', $dados);
     }
+
+    public function ver($id) {
+        $post = $this->postModel->lerPostPorId($id);
+        $usuario = $this->usuarioModel->lerUsuarioPorId($post->usua_id);
+        $dados = [
+            'post' -> $post,
+            'usuario' -> $usuario
+        ];
+        $this->view('posts/ver', $dados);
+    }
+
     public function cadastrar()
     {
 

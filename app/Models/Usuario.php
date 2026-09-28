@@ -46,6 +46,6 @@ class Usuario{
     public function lerUsuarioPorId($id) {
         $this->db->query("SELECT * FROM usuarios WHERE usua_id = :id");
         $this->db->bind("id", $id);
-        return $this->db->resultados();
+        return $this->db->resultado();
     } // fim da função lerUsuarioPorId
 }

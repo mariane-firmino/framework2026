@@ -9,18 +9,18 @@
     </div>
     <div class="card text-center">
             <div class="card-header bg-secondary text-white font-weight-bold">
-                <?= $dados['post']->titulo ?>
+                <?= $dados['post']->post_titulo ?>
             </div>
             <div class="card-body">
-                <p class="card-text"><?= $dados['post']->texto ?></p>
+                <p class="card-text"><?= $dados['post']->post_texto ?></p>
             </div>
             <div class="card-footer text-muted">
                 <small>
-                    Escrito por: <b><?= $dados['usuario']->nome ?></b> em <i><?= Checa::dataBr($dados['post']->criado_em) ?></i>
+                    Escrito por: <b><?= $dados['usuario']->usua_nome ?></b> em <i><?= Checa::dataBr($dados['post']->criado_em) ?></i>
                 </small>
             </div>
 
-            <?php if ($dados['post']->usuario_id == $_SESSION['usuario_id']) : ?>
+            <?php if ($dados['post']->usua_id == $_SESSION['usuario_id']) : ?>
                 <ul class="list-inline">
                     <li class="list-inline-item">
                         <a href="<?= URL . '/posts/editar/' . $dados['post']->id ?>" class="btn btn-sm btn-primary">Editar</a>

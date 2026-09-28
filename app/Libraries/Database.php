@@ -1,10 +1,10 @@
 <?php
 class Database{
-    private $host = "localhost";
+    private $host = "127.0.0.1";
     private $usuario = "root";
-    private $senha = "";
+    private $senha = "admin";
     private $banco = "framework";
-    private $porta = "3307"; //verificar a porta do seu banco
+    private $porta = "3306"; //verificar a porta do seu banco
     private $dbh;
     private $stmt;
 

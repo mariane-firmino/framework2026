@@ -18,7 +18,7 @@
                         <a href="<?= URL. '/posts/ver/'. $post->postId?>" class="btn btn-sm btn-outline-info float-right">Ler mais...</a>
                     </div>
                     <div class="card-footer text-muted">
-                        <small>Escrito por: <b><?= $post->post_nome ?></b> em <i><?= Checa::dataBr($post->postDataCadastro) ?></i></small>
+                        <small>Escrito por: <b><?= $post->nomeUsuario ?></b> em <i><?= Checa::dataBr($post->postDataCadastro) ?></i></small>
                     </div>
                 </div>
                 <?php endforeach ?>
